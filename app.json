@@ -31,6 +31,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "081b7c67-e4cf-4140-9843-642862b4f93a"
+      }
+    },
+    "owner": "kylegrande"
   }
 }
