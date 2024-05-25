@@ -29,28 +29,32 @@ const HomeSheet = () => {
           </View>
         </TouchableOpacity>
       </Link>
-      <TouchableOpacity>
-        <View style={styles.contentContainer}>
-          <Octicons name="dot-fill" size={72} color="#FEC90C" />
-          <View>
-            <Text style={{ fontSize: 18 }}>Reserve 📅</Text>
-            <Text style={{ color: "#868782", fontSize: 15 }}>
-              5:30pm on Broadway
-            </Text>
+      <Link href="/list" asChild>
+        <TouchableOpacity>
+          <View style={styles.contentContainer}>
+            <Octicons name="dot-fill" size={72} color="#FEC90C" />
+            <View>
+              <Text style={{ fontSize: 18 }}>Reserve 📅</Text>
+              <Text style={{ color: "#868782", fontSize: 15 }}>
+                5:30pm on Broadway
+              </Text>
+            </View>
           </View>
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <View style={styles.contentContainer}>
-          <Octicons name="dot-fill" size={72} color="#519726" />
-          <View>
-            <Text style={{ fontSize: 18 }}>Sell 💸</Text>
-            <Text style={{ color: "#868782", fontSize: 15 }}>
-              Estimated Nearby Value
-            </Text>
+        </TouchableOpacity>
+      </Link>
+      <Link href="/request" asChild>
+        <TouchableOpacity>
+          <View style={styles.contentContainer}>
+            <Octicons name="dot-fill" size={72} color="#519726" />
+            <View>
+              <Text style={{ fontSize: 18 }}>Sell 💸</Text>
+              <Text style={{ color: "#868782", fontSize: 15 }}>
+                Estimated Nearby Value
+              </Text>
+            </View>
           </View>
-        </View>
-      </TouchableOpacity>
+        </TouchableOpacity>
+      </Link>
     </View>
   );
 };

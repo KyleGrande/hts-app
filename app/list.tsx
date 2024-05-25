@@ -1,4 +1,4 @@
-import ListSheet from "@/SheetViews/ListSheet";
-export default function Test() {
+import ListSheet from "@/views/ListSheet";
+export default function List() {
   return <ListSheet />;
 }

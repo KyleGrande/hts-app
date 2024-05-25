@@ -7,12 +7,12 @@ import {
   TouchableOpacity,
 } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import SegmentedControl from "@react-native-segmented-control/segmented-control";
 
 const ListSheet = () => {
   const [value, setValue] = useState("0"); // Store value as a string in cents
   const [date, setDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
-
   const onChangeDate = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     setShowDatePicker(false);
@@ -72,7 +72,7 @@ const ListSheet = () => {
         value={date}
         mode={"datetime"}
         is24Hour={true}
-        display="default"
+        display="spinner"
         onChange={onChangeDate}
       />
       <TouchableOpacity style={styles.holdButton}>
@@ -85,8 +85,8 @@ const ListSheet = () => {
 const styles = StyleSheet.create({
   container: {
     // flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    // alignItems: "center",
+    // justifyContent: "center",
     // padding: 20,
   },
   input: {
