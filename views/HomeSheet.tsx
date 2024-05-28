@@ -16,20 +16,20 @@ const HomeSheet = () => {
 
   return (
     <View>
-      <Link href="/list" asChild>
-        <TouchableOpacity onPress={button}>
-          <View style={styles.contentContainer}>
-            <Octicons name="dot-fill" size={72} color="#DB4437" />
-            <View>
-              <Text style={{ fontSize: 18 }}>Instant ⚡</Text>
-              <Text style={{ color: "#868782", fontSize: 15 }}>
-                Estimated Nearby Cost
-              </Text>
-            </View>
+      {/* <Link href="/list" asChild> */}
+      <TouchableOpacity onPress={button}>
+        <View style={styles.contentContainer}>
+          <Octicons name="dot-fill" size={72} color="#DB4437" />
+          <View>
+            <Text style={{ fontSize: 18 }}>Instant ⚡</Text>
+            <Text style={{ color: "#868782", fontSize: 15 }}>
+              Estimated Nearby Cost
+            </Text>
           </View>
-        </TouchableOpacity>
-      </Link>
-      <Link href="/list" asChild>
+        </View>
+      </TouchableOpacity>
+      {/* </Link> */}
+      <Link href="/request" asChild>
         <TouchableOpacity>
           <View style={styles.contentContainer}>
             <Octicons name="dot-fill" size={72} color="#FEC90C" />
@@ -42,7 +42,7 @@ const HomeSheet = () => {
           </View>
         </TouchableOpacity>
       </Link>
-      <Link href="/request" asChild>
+      <Link href="/list" asChild>
         <TouchableOpacity>
           <View style={styles.contentContainer}>
             <Octicons name="dot-fill" size={72} color="#519726" />

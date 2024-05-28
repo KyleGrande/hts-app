@@ -3,9 +3,9 @@ import { Slot, Stack } from "expo-router";
 import { TouchableWithoutFeedback } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { NYCMapView } from "@/views/NYCMapView";
-import { SheetView } from "@/views/BottomSheetView";
 import React, { useCallback, useMemo, useRef } from "react";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
+import RequestSheet from "@/views/RequestSheet";
 
 export default function RootLayout() {
   const dismissKeyboard = () => {};
@@ -14,11 +14,11 @@ export default function RootLayout() {
   const handleSheetChanges = useCallback((index: number) => {
     console.log("handleSheetChanges", index);
   }, []);
+
   return (
     <TouchableWithoutFeedback onPress={dismissKeyboard}>
       <GestureHandlerRootView style={{ flex: 1 }}>
         <NYCMapView />
-
         <BottomSheet
           ref={bottomSheetRef}
           onChange={handleSheetChanges}

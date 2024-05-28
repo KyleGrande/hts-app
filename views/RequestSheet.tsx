@@ -1,46 +1,33 @@
+// RequestSheet.tsx
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity, Switch } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import SegmentedControl from "@react-native-segmented-control/segmented-control";
-import { SpotSearchBar } from "@/components/SpotSearchBar";
+import SegmentedControl, {
+  SegmentedControlBase,
+} from "@react-native-segmented-control/segmented-control";
 import { Picker } from "@react-native-picker/picker";
-const [selectedLanguage, setSelectedLanguage] = useState();
+import { SpotSearchBar } from "../components/SpotSearchBar";
 const RequestSheet = () => {
   const [value, setValue] = useState("0"); // Store value as a string in cents
   const [date, setDate] = useState(new Date());
   const [segmentedValue, setSegmentedValue] = useState(1);
   const [time, setTime] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
-
-  const onChangeDate = (event, selectedDate) => {
+  const [selectedLanguage, setSelectedLanguage] = useState();
+  const [relistValue, setRelistValue] = useState(true);
+  const onChangeDate = (event: number, selectedDate: Date) => {
     const currentDate = selectedDate || date;
     setShowDatePicker(false);
     setDate(currentDate);
   };
 
-  // Helper function to format the cents value into a dollar string
-  const formatCurrency = (cents) => {
-    // Convert string to integer, ensure it's a number
-    const numericValue = parseInt(cents, 10);
-    // Convert to dollars and format to two decimal places
-    return (numericValue / 100).toFixed(2);
-  };
-
-  const handleNumberPress = (num) => {
-    // Update value in cents
-    const newValue = value === "0" ? num : value + num;
-    setValue(newValue);
-  };
-
   return (
-    <View>
-      {/* <SpotSearchBar /> */}
+    <View
+      style={{
+        gap: 10,
+      }}
+    >
+      <SpotSearchBar />
       <SegmentedControl
         values={["Now", "Later"]}
         selectedIndex={segmentedValue}
@@ -48,61 +35,98 @@ const RequestSheet = () => {
           setSegmentedValue(event.nativeEvent.selectedSegmentIndex);
         }}
       />
-      <View>
-        <Text>Date</Text>
+      <View style={styles.selectContainer}>
+        <Text style={styles.selectText}>Date</Text>
         <DateTimePicker
           testID="dateTimePicker"
           value={date}
           mode={"date"}
-          // is24Hour={true}
           display="compact"
-          onChange={onChangeDate}
+          // onChange={onChangeDate}
         />
       </View>
 
-      <View>
-        <Text>Arrival Time</Text>
+      <View style={styles.selectContainer}>
+        <Text style={styles.selectText}>Arrival Time</Text>
         <DateTimePicker
           testID="dateTimePicker"
           value={time}
           mode={"time"}
-          // is24Hour={true}
           display="compact"
-          onChange={onChangeDate}
         />
       </View>
-      <View>
-        <Text>Departure Time</Text>
+      <View style={styles.selectContainer}>
+        <Text style={styles.selectText}>Departure Time</Text>
 
         <DateTimePicker
           testID="dateTimePicker"
           value={time}
           mode={"time"}
-          // is24Hour={true}
           display="compact"
-          onChange={onChangeDate}
         />
       </View>
-      <Picker selectedValue={selectedLanguage} mode={"dialog"}>
+      <View style={styles.selectContainer}>
+        <Text style={styles.selectText}>Repeat</Text>
+
+        <DateTimePicker
+          testID="dateTimePicker"
+          value={time}
+          mode={"time"}
+          display="compact"
+        />
+      </View>
+      <View style={styles.selectContainer}>
+        <Text style={styles.selectText}>Max Spend</Text>
+
+        <DateTimePicker
+          testID="dateTimePicker"
+          value={time}
+          mode={"time"}
+          display="compact"
+        />
+      </View>
+      <View style={styles.selectContainer}>
+        <Text style={styles.selectText}>Relist</Text>
+
+        <Switch
+          // trackColor={{ false: "#767577", true: "#81b0ff" }}
+          // thumbColor={"#f4f3f4"}
+          // ios_backgroundColor="#3e3e3e"
+          value={relistValue}
+          onValueChange={(value) => setRelistValue(value)}
+        />
+      </View>
+      {/* <Picker
+        selectedValue={selectedLanguage}
+        mode={"dialog"}
+        onValueChange={(itemValue, itemIndex) => setSelectedLanguage(itemValue)}
+      >
         <Picker.Item label="Java" value="java" />
         <Picker.Item label="JavaScript" value="js" />
-      </Picker>
-      <TouchableOpacity style={styles.holdButton}>
-        <Text style={styles.holdButtonText}>Hold that Spot</Text>
+      </Picker> */}
+      <TouchableOpacity>
+        <Text style={styles.holdButtonText}>Grab that Spot</Text>
       </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  holdButton: {
-    // marginTop: 20,
-    backgroundColor: "#4CAF50",
-    // padding: 15,
-    borderRadius: 5,
-  },
   holdButtonText: {
-    color: "white",
+    color: "#4CAF50",
+    fontSize: 38,
+    padding: 10,
+    textAlign: "center",
+  },
+  selectContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    backgroundColor: "white",
+    padding: 10,
+    borderRadius: 10,
+  },
+  selectText: {
     fontSize: 18,
   },
 });

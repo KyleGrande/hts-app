@@ -34,10 +34,10 @@ const SpotSearchBar = () => {
   return (
     <View
       style={{
-        display: "flex",
+        // display: "flex",
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "space-between",
+        // justifyContent: "space-between",
       }}
     >
       <SearchBar
@@ -85,7 +85,7 @@ const SpotSearchBar = () => {
               width: 48,
               borderRadius: 30,
               backgroundColor: "#C7C7CB",
-              display: "flex",
+              // display: "flex",
               justifyContent: "center",
               alignItems: "center",
             }}
