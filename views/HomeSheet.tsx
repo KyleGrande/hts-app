@@ -7,7 +7,6 @@ import {
 } from "react-native";
 
 import { Octicons } from "@expo/vector-icons";
-import { Stack } from "expo-router";
 import { Link } from "expo-router";
 const HomeSheet = () => {
   const button = () => {
@@ -16,7 +15,6 @@ const HomeSheet = () => {
 
   return (
     <View>
-      {/* <Link href="/list" asChild> */}
       <TouchableOpacity onPress={button}>
         <View style={styles.contentContainer}>
           <Octicons name="dot-fill" size={72} color="#DB4437" />
@@ -28,7 +26,6 @@ const HomeSheet = () => {
           </View>
         </View>
       </TouchableOpacity>
-      {/* </Link> */}
       <Link href="/request" asChild>
         <TouchableOpacity>
           <View style={styles.contentContainer}>
@@ -60,7 +57,6 @@ const HomeSheet = () => {
 };
 const styles = StyleSheet.create({
   contentContainer: {
-    //maxWidth: "80%",
     paddingVertical: 12,
     marginVertical: 6,
     backgroundColor: "white",

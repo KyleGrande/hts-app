@@ -6,22 +6,26 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import DateTimePicker from "@react-native-community/datetimepicker";
-import SegmentedControl from "@react-native-segmented-control/segmented-control";
-import { SpotSearchBar } from "@/components/SpotSearchBar";
+import DateTimePicker, {
+  DateTimePickerEvent,
+} from "@react-native-community/datetimepicker";
+
 const ListSheet = () => {
   const [value, setValue] = useState("0"); // Store value as a string in cents
   const [date, setDate] = useState(new Date());
-  const [showDatePicker, setShowDatePicker] = useState(false);
-  const onChangeDate = (event, selectedDate) => {
+  // const [showDatePicker, setShowDatePicker] = useState(false);
+  const onChangeDate = (
+    event: DateTimePickerEvent,
+    selectedDate: Date | undefined
+  ) => {
     const currentDate = selectedDate || date;
-    setShowDatePicker(false);
+    // setShowDatePicker(false);
     setDate(currentDate);
   };
-  const [segementedControlIndex, setSegementedControlIndex] = useState(1);
+  // const [segementedControlIndex, setSegementedControlIndex] = useState(1);
 
   // Helper function to format the cents value into a dollar string
-  const formatCurrency = (cents) => {
+  const formatCurrency = (cents: string) => {
     // Convert string to integer, ensure it's a number
     const numericValue = parseInt(cents, 10);
     // Convert to dollars and format to two decimal places
