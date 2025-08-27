@@ -5,7 +5,8 @@ import {
   TouchableOpacity,
   Dimensions,
 } from "react-native";
-
+import { useEffect } from "react";
+import { useBottomSheet } from "@/app/_layout";
 import { Octicons } from "@expo/vector-icons";
 import { Stack } from "expo-router";
 import { Link } from "expo-router";
@@ -13,7 +14,10 @@ const HomeSheet = () => {
   const button = () => {
     console.log("Button Pressed");
   };
-
+  const { snapTo } = useBottomSheet();
+  useEffect(() => {
+    snapTo(0);
+  }, [snapTo]);
   return (
     <View>
       {/* <Link href="/list" asChild> */}

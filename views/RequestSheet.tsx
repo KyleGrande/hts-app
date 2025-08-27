@@ -1,11 +1,13 @@
 // RequestSheet.tsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useBottomSheet } from "@/app/_layout";
 import { StyleSheet, View, Text, TouchableOpacity, Switch } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import SegmentedControl, {
   SegmentedControlBase,
 } from "@react-native-segmented-control/segmented-control";
 import { Picker } from "@react-native-picker/picker";
+import { useRouter } from "expo-router";
 import { SpotSearchBar } from "../components/SpotSearchBar";
 const RequestSheet = () => {
   const [value, setValue] = useState("0"); // Store value as a string in cents
@@ -20,7 +22,11 @@ const RequestSheet = () => {
     setShowDatePicker(false);
     setDate(currentDate);
   };
-
+  const router = useRouter();
+  const { snapTo } = useBottomSheet();
+  useEffect(() => {
+    snapTo(1);
+  }, [snapTo]);
   return (
     <View
       style={{
@@ -107,6 +113,9 @@ const RequestSheet = () => {
       <TouchableOpacity>
         <Text style={styles.holdButtonText}>Grab that Spot</Text>
       </TouchableOpacity>
+      <TouchableOpacity onPress={() => router.navigate("/")}>
+        <Text style={styles.cancelButtonText}>Cancel</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -128,6 +137,12 @@ const styles = StyleSheet.create({
   },
   selectText: {
     fontSize: 18,
+  },
+  cancelButtonText: {
+    color: "red",
+    fontSize: 20,
+    padding: 10,
+    textAlign: "center",
   },
 });
 
